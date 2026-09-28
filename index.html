@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalshi — Selected Creatives</title>
+<style>
+  :root{ --bg:#0A0F0D; --panel:#0F1613; --line:#1E2A25; --mint:#00E08A; --mint2:#16E39C; --ink:#EAF3EF; --dim:#8CA69B; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ background:radial-gradient(1100px 520px at 50% -12%, rgba(0,224,138,.10), transparent 60%), var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+  header{ text-align:center; padding:26px 20px 6px; }
+  .brand{ font-size:26px; font-weight:800; letter-spacing:-.02em; color:var(--mint); }
+  h1{ font-size:20px; font-weight:800; letter-spacing:-.02em; margin:4px 0 0; }
+  .grid{ display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:14px; max-width:1240px; margin:22px auto; padding:0 18px 30px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:12px 12px 12px; display:flex; flex-direction:column; align-items:center; }
+  .card.hero{ border-color:rgba(0,224,138,.5); box-shadow:0 0 0 1px rgba(0,224,138,.25), 0 14px 40px rgba(0,224,138,.10); }
+  .phone{ position:relative; width:100%; aspect-ratio:1 / 2; border-radius:22px; background:#000; border:6px solid #171f1b;
+    box-shadow:0 12px 32px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.03); overflow:hidden; }
+  .phone .notch{ position:absolute; top:5px; left:50%; transform:translateX(-50%); width:60px; height:12px; background:#0b0b0b; border-radius:0 0 9px 9px; z-index:3; }
+  .phone iframe{ position:absolute; top:0; left:0; width:216%; height:216%; border:0; background:#000; transform:scale(.463); transform-origin:top left; }
+  .meta{ width:100%; margin-top:11px; }
+  .title{ font-size:14.5px; font-weight:800; letter-spacing:-.01em; }
+  .badge{ display:inline-block; margin-top:4px; font-size:9px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:#04140E;
+    background:linear-gradient(180deg,var(--mint2),#00B877); padding:3px 8px; border-radius:999px; }
+  .badge.grey{ background:#22302A; color:var(--mint2); }
+  .tag{ margin-top:5px; color:var(--dim); font-size:11px; }
+  .stats{ display:flex; gap:5px; margin-top:9px; }
+  .stats .s{ flex:1; background:#0B120F; border:1px solid var(--line); border-radius:9px; padding:6px 3px; text-align:center; }
+  .stats .s b{ display:block; font-size:12.5px; font-weight:800; }
+  .stats .s.roas b{ color:var(--mint2); }
+  .stats .s span{ font-size:8px; color:var(--dim); text-transform:uppercase; letter-spacing:.03em; }
+</style></head>
+<body>
+<header>
+  <div class="brand">Kalshi</div>
+  <h1>Selected Creatives</h1>
+</header>
+<div class="grid" id="grid"></div>
+<script>
+var C=[
+ {f:"Kalshi_Sunday_Biggest_Tap.html", t:"Sunday's Biggest", tag:"Standalone playable · 1-tap", b:"Best ROAS", cls:"hero", bcls:"", spend:"$4.8K", roas:"95.2%", inst:"87"},
+ {f:"Kalshi_Late_Window_Tap.html",    t:"Late Window",      tag:"Standalone + end card", b:"Climbs to D3", bcls:"grey", spend:"$2.8K", roas:"36.0%", inst:"44"},
+ {f:"Kalshi_Too_Many_Takes_Tap.html", t:"Too Many Takes",   tag:"Standalone + end card", b:"D3 38%", bcls:"grey", spend:"$7.9K", roas:"23.9%", inst:"130"},
+ {f:"Kalshi_1PM_Window_Tap.html",     t:"1PM Window",       tag:"Standalone playable · 1-tap", b:"Steady", bcls:"grey", spend:"$2.4K", roas:"18.8%", inst:"64"},
+ {f:"Kalshi_MVP_Rows_Interactive.html",t:"MVP Leaderboard", tag:"Standalone · row select", b:"New", bcls:"grey", spend:"$2.1K", roas:"—", inst:"27"}
+];
+var g=document.getElementById("grid");
+C.forEach(function(c){
+  var card=document.createElement("div"); card.className="card"+(c.cls?" "+c.cls:"");
+  card.innerHTML='<div class="phone"><div class="notch"></div><iframe loading="lazy" src="creatives/'+c.f+'" title="'+c.t+'"></iframe></div>'+
+    '<div class="meta"><div class="title">'+c.t+'</div>'+
+    '<span class="badge '+c.bcls+'">'+c.b+'</span>'+
+    '<div class="tag">'+c.tag+'</div>'+
+    '<div class="stats"><div class="s"><b>'+c.spend+'</b><span>Spend</span></div>'+
+      '<div class="s roas"><b>'+c.roas+'</b><span>D1 ROAS</span></div>'+
+      '<div class="s"><b>'+c.inst+'</b><span>Inst</span></div></div></div>';
+  g.appendChild(card);
+});
+</script>
+</body></html>
